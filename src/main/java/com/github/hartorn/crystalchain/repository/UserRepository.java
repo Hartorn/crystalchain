@@ -1,8 +1,6 @@
 package com.github.hartorn.crystalchain.repository;
 
-import com.github.hartorn.crystalchain.model.dto.UserDTO;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.github.hartorn.crystalchain.model.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@RepositoryRestResource(collectionResourceRel = "user", path = "user")
-public interface UserRepository extends PagingAndSortingRepository<UserDTO, Long> {}
+public interface UserRepository extends JpaRepository<UserEntity, Long> {}

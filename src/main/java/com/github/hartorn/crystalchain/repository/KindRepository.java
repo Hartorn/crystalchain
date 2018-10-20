@@ -1,8 +1,6 @@
 package com.github.hartorn.crystalchain.repository;
 
-import com.github.hartorn.crystalchain.model.dto.KindDTO;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.github.hartorn.crystalchain.model.entity.KindEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@RepositoryRestResource(collectionResourceRel = "kind", path = "kind")
-public interface KindRepository extends PagingAndSortingRepository<KindDTO, Long> {}
+public interface KindRepository extends JpaRepository<KindEntity, Long> {}

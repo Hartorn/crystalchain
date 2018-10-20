@@ -1,8 +1,6 @@
 package com.github.hartorn.crystalchain.repository;
 
-import com.github.hartorn.crystalchain.model.dto.OrganisationDTO;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.github.hartorn.crystalchain.model.entity.OrganisationEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@RepositoryRestResource(collectionResourceRel = "organisation", path = "organisation")
-public interface OrganisationRepository extends PagingAndSortingRepository<OrganisationDTO, Long> {}
+public interface OrganisationRepository extends JpaRepository<OrganisationEntity, Long> {}

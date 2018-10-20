@@ -1,5 +1,6 @@
-package com.github.hartorn.crystalchain.model.dto;
+package com.github.hartorn.crystalchain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -16,7 +17,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public abstract class AbstractAuditedDTO {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public abstract class AbstractAuditedEntity {
   @Column(name = "created_date", nullable = false, updatable = false)
   @CreatedDate
   @Temporal(TemporalType.TIMESTAMP)

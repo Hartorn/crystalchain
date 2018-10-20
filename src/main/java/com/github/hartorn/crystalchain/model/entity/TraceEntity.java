@@ -1,17 +1,17 @@
-package com.github.hartorn.crystalchain.model.dto;
+package com.github.hartorn.crystalchain.model.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity(name = "trace")
-public class TraceDTO extends AbstractAuditedDTO {
+@javax.persistence.Entity(name = "trace")
+public class TraceEntity extends AbstractAuditedEntity implements Entity<Long> {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
 
@@ -28,6 +28,11 @@ public class TraceDTO extends AbstractAuditedDTO {
   private Integer woolTopGrossWeight;
 
   @ManyToOne(optional = false)
-  private KindDTO kind;
+  private KindEntity kind;
 
+  @ManyToOne(optional = false)
+  private UserEntity user;
+
+  @ManyToOne(optional = false)
+  private OrganisationEntity organisation;
 }

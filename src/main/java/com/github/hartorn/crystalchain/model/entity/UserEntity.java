@@ -1,18 +1,18 @@
-package com.github.hartorn.crystalchain.model.dto;
+package com.github.hartorn.crystalchain.model.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity(name = "user")
-public class UserDTO extends AbstractAuditedDTO {
+@javax.persistence.Entity(name = "user")
+public class UserEntity extends AbstractAuditedEntity implements Entity<Long> {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
 
@@ -29,9 +29,8 @@ public class UserDTO extends AbstractAuditedDTO {
   private String password;
 
   @ManyToOne(optional = false)
-  private KindDTO kind;
+  private KindEntity kind;
 
   @ManyToOne(optional = false)
-  private OrganisationDTO organisation;
-
+  private OrganisationEntity organisation;
 }

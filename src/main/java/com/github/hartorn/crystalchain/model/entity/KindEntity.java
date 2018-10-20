@@ -1,16 +1,16 @@
-package com.github.hartorn.crystalchain.model.dto;
+package com.github.hartorn.crystalchain.model.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name = "kind")
-public class KindDTO extends AbstractAuditedDTO {
+@javax.persistence.Entity(name = "kind")
+public class KindEntity extends AbstractAuditedEntity implements Entity<Long> {
 
   enum TableType {
     USER,
@@ -19,7 +19,7 @@ public class KindDTO extends AbstractAuditedDTO {
   }
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
   private Long id;
 

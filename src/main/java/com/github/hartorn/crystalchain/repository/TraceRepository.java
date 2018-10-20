@@ -1,8 +1,6 @@
 package com.github.hartorn.crystalchain.repository;
 
-import com.github.hartorn.crystalchain.model.dto.TraceDTO;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.github.hartorn.crystalchain.model.entity.TraceEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@RepositoryRestResource(collectionResourceRel = "trace", path = "trace")
-public interface TraceRepository extends PagingAndSortingRepository<TraceDTO, Long> {}
+public interface TraceRepository extends JpaRepository<TraceEntity, Long> {}
