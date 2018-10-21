@@ -4,17 +4,17 @@ import com.github.hartorn.crystalchain.model.entity.Entity;
 import java.util.List;
 
 /** Service for operation on kind. */
-public interface GenericService<T extends Entity<ID>, ID> {
+public interface GenericService<T extends Entity<ID>, D, ID> {
 
   List<T> getAllEntities();
 
-  T createEntity(T kind);
+  T createEntity(D kind);
 
   T getEntityById(ID id);
 
-  T mergeEntityById(ID id, T toMerge);
+  T mergeEntityById(ID id, D toMerge);
 
-  T updateEntity(T toUpdate);
+  T updateEntity(D toUpdate);
 
   void deleteEntityById(ID id);
 }

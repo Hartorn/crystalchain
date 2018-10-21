@@ -12,7 +12,7 @@ import lombok.Data;
 @javax.persistence.Entity(name = "kind")
 public class KindEntity extends AbstractAuditedEntity implements Entity<Long> {
 
-  enum TableType {
+  public enum TableType {
     USER,
     TRACE,
     ORGANIZATION

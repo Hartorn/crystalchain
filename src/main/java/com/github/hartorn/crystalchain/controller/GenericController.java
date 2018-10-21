@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Slf4j
 @RequiredArgsConstructor
-public abstract class GenericController<T extends Entity<ID>, ID> {
-  private final GenericService<T, ID> kindService;
+public abstract class GenericController<T extends Entity<ID>, D extends Entity<ID>, ID> {
+  private final GenericService<T, D, ID> kindService;
 
   @GetMapping()
   public List<T> getAllEntities() {
@@ -25,7 +25,7 @@ public abstract class GenericController<T extends Entity<ID>, ID> {
   }
 
   @PostMapping()
-  public T createEntity(T toCreate) {
+  public T createEntity(D toCreate) {
     return kindService.createEntity(toCreate);
   }
 
@@ -35,12 +35,13 @@ public abstract class GenericController<T extends Entity<ID>, ID> {
   }
 
   @PatchMapping("{id}")
-  public T mergeEntityById(@PathVariable ID id, @RequestBody T toMerge) {
+  public T mergeEntityById(@PathVariable ID id, @RequestBody D toMerge)
+  {
     return kindService.mergeEntityById(id, toMerge);
   }
 
   @PutMapping("{id}")
-  public T updateEntity(@PathVariable ID id, @RequestBody T toUpdate) {
+  public T updateEntity(@PathVariable ID id, @RequestBody D toUpdate) {
     Assert.notNull(toUpdate, "toUpdate object should not be null");
     Assert.notNull(id, "id should not be null");
     toUpdate.setId(id);
